@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+        
+        <title>US colleges</title>
+    </head>
+  <body>
+        <header>
+                <div class="navbar navbar-dark bg-dark shadow-sm">
+                  <div class="container d-flex justify-content-between">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> -->
+                      <strong>US College Data</strong>
+                    </a>
+                  </div>
+                </div>
+              </header>
+          
+              <main role="main">
+          
+                <section class="jumbotron text-center">
+                  <div class="container">
+                    <h1 class="jumbotron-heading">Search for US Colleges</h1>
+                    <p class="lead text-muted">Find info on colleges in your area</p>
+                  </div>
+                </section>
+          
+                <div class="album py-5 bg-light">
+                  
+                  <div class="container">
+                      <div class="filters row">
+                          <input id="placeTxt" type="text" class="form-control" placeholder="Enter a city or institution name" aria-label="place" aria-describedby="basic-addon1">
+                          <button type="button" class="btn btn-primary" onclick="runSearch()">Search</button>
+                        </div>
+                    <h2 class="results"></h2>
+                    <div class="row cardrow">
+                        <div id='map' style='width: 400px; height: 300px;'></div> 
+                      </div>
+                      
+                  </div>
+                    
+                    
+                </div>
+          
+              </main>
+          
+              <footer class="text-muted">
+                <div class="container">
+                  <p class="float-right">
+                    <a href="#">Back to top</a>
+                  </p>
+                  <p>Cohort Go</p>
+                </div>
+              </footer>
+          
+  </body>
+  <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiemFjc2t5Y29ob3J0IiwiYSI6ImNqbzN4bnJmMjEyODEzcHFpMXlqYTh1ZGEifQ.udtQH-hppvF3aHIHasra_g';
+      var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: [-71.05, 42.33],
+      zoom: 9
+      });
+
+      var lnglats =[-71.101244, 42.336825, -71.054002, 42.375018,-71.106412, 42.341753,-71.099967, 42.3393,-71.087841, 42.339477,-71.096556, 42.338505,-71.05452, 42.36279,-71.103634, 42.340602,-71.070231, 42.346023,-71.1103, 42.254037,-71.072646, 42.381091,-71.076991, 42.35176,-71.094983, 42.336632,-71.08629, 42.340946,-71.099275, 42.336862,-71.0642, 42.352922,-71.076196, 42.350664,-71.057468, 42.305343];
+
+      for (var i = 0; i < 18; i++) { 
+        var m2 = new mapboxgl.Marker()
+          .setLngLat([lnglats[0 + (i*2)], lnglats[1 +(i*2)]])
+          .addTo(map);
+      }
+      </script> 
+  <script src="src/script.js"></script>
+</html>
+
